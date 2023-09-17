@@ -26,17 +26,9 @@ bool init() {
         return false;
     }
 
-    window = SDL_CreateWindow("Software Renderer", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, FRAMEBUFFER_WIDTH, FRAMEBUFFER_HEIGHT, SDL_WINDOW_SHOWN);
-    if (!window) {
-        std::cerr << "Error: Failed to create SDL window: " << SDL_GetError() << std::endl;
-        return false;
-    }
+    window = SDL_CreateWindow("SR2", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, FRAMEBUFFER_WIDTH, FRAMEBUFFER_HEIGHT, SDL_WINDOW_SHOWN);
 
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    if (!renderer) {
-        std::cerr << "Error: Failed to create SDL renderer: " << SDL_GetError() << std::endl;
-        return false;
-    }
 
     return true;
 }
@@ -181,7 +173,7 @@ int main(int argc, char* argv[]) {
     std::vector<Face> faces;
     Uniforms uniforms;
 
-    bool loaded = loadOBJ("nave.obj", vertices, faces, normals, tex);
+    bool loaded = loadOBJ("nave2.obj", vertices, faces, normals, tex);
     std::vector<Vertex> vertexArray = setupVertexArray(vertices, faces, normals);
 
     glm::mat4 model = glm::mat4(1);
